@@ -1,6 +1,9 @@
 import { Product } from "../shared/types";
 
-const API_URL = "http://localhost:4000";
+const API_URL =
+  import.meta.env.MODE === "production"
+    ? "https://server-globin-store.herokuapp.com"
+    : "http://localhost:4000";
 
 export const getProducts = () => {
   return fetch(`${API_URL}/products`)

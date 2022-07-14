@@ -1,4 +1,10 @@
-import { BrowserRouter, Outlet, Route, Routes } from "react-router-dom";
+import {
+  BrowserRouter,
+  HashRouter,
+  Outlet,
+  Route,
+  Routes,
+} from "react-router-dom";
 import { Cart } from "./Cart";
 import { CartProvider } from "./CartContext";
 import { Checkout } from "./Checkout";
@@ -9,7 +15,7 @@ import { Header } from "./shared/Header";
 const App = () => {
   return (
     <CartProvider>
-      <BrowserRouter>
+      <HashRouter>
         <Header />
         <div className="container">
           <Routes>
@@ -20,7 +26,7 @@ const App = () => {
             <Route path="*" element={<>Page not found</>} />
           </Routes>
         </div>
-      </BrowserRouter>
+      </HashRouter>
     </CartProvider>
   );
 };

@@ -1,5 +1,5 @@
 import { Loader } from "../shared/Loader";
-import { Link } from "react-router-dom";
+import { Link, useSearchParams } from "react-router-dom";
 import { useOrder } from "./useOrder";
 
 interface OrderSummaryProps {
@@ -9,8 +9,11 @@ interface OrderSummaryProps {
 export const OrderSummary = ({
   useOrderHook = useOrder,
 }: OrderSummaryProps) => {
-  const { isLoading, order } = useOrderHook();
-
+  const [searchParams] = useSearchParams();
+  const { isLoading, order } = useOrderHook(
+    searchParams.get("orderId") || "-1"
+  );
+  console.log(searchParams.get);
   if (isLoading) {
     return <Loader />;
   }

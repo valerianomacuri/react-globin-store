@@ -1,3 +1,4 @@
+import { useNavigate } from "react-router-dom";
 import { useCartContext } from "../CartContext/CartContext";
 import { postCheckout } from "../utils/api";
 import { CheckoutForm } from "./CheckoutForm";
@@ -9,13 +10,13 @@ interface CheckoutProps {
 
 export const Checkout = ({ useCartHook = useCartContext }: CheckoutProps) => {
   const { products, totalPrice, clearCart } = useCartHook();
-
+  const navigate = useNavigate();
   const submitCheckout = async () => {
     const { orderId } = await postCheckout({
       products,
     });
     clearCart();
-    window.location.assign(`/order?orderId=${orderId}`);
+    navigate(`/order?orderId=${orderId}`);
   };
 
   return (

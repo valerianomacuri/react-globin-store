@@ -1,5 +1,9 @@
 # globin-store
 
+### Live
+
+* https://globin-store.netlify.app/
+
 ### Install dependencies
 ```console
 yarn

@@ -15,7 +15,7 @@ export const Checkout = ({ useCartHook = useCartContext }: CheckoutProps) => {
       products,
     });
     clearCart();
-    window.location.assign(`/order/?orderId=${orderId}`);
+    window.location.assign(`/order?orderId=${orderId}`);
   };
 
   return (

@@ -1,6 +1,8 @@
 //* remover el strict mode para poder apreciar el correcto funcionamiento en React 18
 import { DependencyList, useEffect, useRef } from "react";
 
+export * from "./useReactive";
+
 //* componentDidMount
 export const useMounted = (effect: () => void) => {
   useEffect(() => {

@@ -1,3 +1,4 @@
+import { useUpdated, useBeforeUnmount, useMounted } from "../hooks";
 import { ProductCard } from "./ProductCard";
 import { useProducts } from "./useProducts";
 
@@ -10,6 +11,17 @@ interface HomeProps {
 
 export const Home = ({ useProductsHook = useProducts }: HomeProps) => {
   const { categories, isLoading, error } = useProductsHook();
+
+  useMounted(() => {
+    console.log("onMounted", { categories, error, isLoading });
+  });
+  useBeforeUnmount(() => {
+    console.log("onBeforeUnmounted", { categories, error, isLoading });
+  });
+  useUpdated(() => {
+    console.log("onUpdated", { categories, error, isLoading });
+  }, [isLoading, categories, error]);
+
   if (isLoading) {
     return <>Loading...</>;
   }

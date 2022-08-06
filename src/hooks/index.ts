@@ -30,3 +30,20 @@ export const useUpdated = (effect: () => void, deps: DependencyList) => {
     effect();
   }, deps);
 };
+
+export const useBeforeUpdate = (effect: () => void, deps: DependencyList) => {
+  const isLastRender = useRef(false);
+
+  useEffect(() => {
+    return () => {
+      isLastRender.current = true;
+    };
+  }, []);
+
+  useEffect(() => {
+    return () => {
+      if (isLastRender.current) return;
+      effect();
+    };
+  }, deps);
+};

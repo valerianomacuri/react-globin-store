@@ -3,6 +3,7 @@ import {
   useBeforeUnmount,
   useMounted,
   useReactive,
+  useBeforeUpdate,
 } from "../hooks";
 import { ProductCard } from "./ProductCard";
 import { useProducts } from "./useProducts";
@@ -17,11 +18,23 @@ interface HomeProps {
 export const Home = ({ useProductsHook = useProducts }: HomeProps) => {
   const { categories, isLoading, error } = useProductsHook();
 
-  useMounted(() => {});
-  useBeforeUnmount(() => {});
-  useUpdated(() => {}, [isLoading, categories, error]);
-
   const counter = useReactive(0);
+
+  useMounted(() => {
+    console.log("mounted");
+  });
+
+  useBeforeUpdate(() => {
+    console.log("beforeUpdate");
+  }, [isLoading, categories, error, counter.value]);
+
+  useUpdated(() => {
+    console.log("updated");
+  }, [isLoading, categories, error, counter.value]);
+
+  useBeforeUnmount(() => {
+    console.log("beforeUnmount");
+  });
 
   const handleClick = () => {
     counter.value++;

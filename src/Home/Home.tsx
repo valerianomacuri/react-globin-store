@@ -1,10 +1,10 @@
 import {
-  useUpdated,
   useBeforeUnmount,
-  useMounted,
-  useReactive,
   useBeforeUpdate,
-} from "../hooks";
+  useMounted,
+  useUpdated,
+} from "react-hooks-lifecycle";
+import { useReactive } from "../hooks";
 import { ProductCard } from "./ProductCard";
 import { useProducts } from "./useProducts";
 

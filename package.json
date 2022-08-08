@@ -25,6 +25,7 @@
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
     "react-hook-form": "^7.33.1",
+    "react-hooks-lifecycle": "^1.2.0",
     "react-router-dom": "^6.3.0",
     "yup": "^0.32.11"
   },
